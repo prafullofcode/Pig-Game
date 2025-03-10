@@ -1,14 +1,14 @@
-"use strict";
-const player0El = document.querySelector(".player--0");
-const player1El = document.querySelector(".player--1 ");
-const btnNewGame = document.querySelector(".btn--new");
-const btnRoll = document.querySelector(".btn--roll");
-const btnHold = document.querySelector(".btn--hold");
-const score0El = document.querySelector("#score--0");
-const score1El = document.querySelector("#score--1");
-const diceImage = document.querySelector(".dice");
-const currentScore0El = document.querySelector("#current--0");
-const currentScore1El = document.querySelector("#current--1");
+'use strict';
+const player0El = document.querySelector('.player--0');
+const player1El = document.querySelector('.player--1 ');
+const btnNewGame = document.querySelector('.btn--new');
+const btnRoll = document.querySelector('.btn--roll');
+const btnHold = document.querySelector('.btn--hold');
+const score0El = document.querySelector('#score--0');
+const score1El = document.querySelector('#score--1');
+const diceImage = document.querySelector('.dice');
+const currentScore0El = document.querySelector('#current--0');
+const currentScore1El = document.querySelector('#current--1');
 game();
 function game() {
   score0El.textContent = 0;
@@ -18,16 +18,15 @@ function game() {
   let activePlayer = 0;
   let playing = true;
 
-  diceImage.classList.add("hidden");
+  diceImage.classList.add('hidden');
 
-  btnRoll.addEventListener("click", function () {
+  btnRoll.addEventListener('click', function () {
     if (playing == true) {
-      let dice;
       //Generating a random dice numnber
-      dice = Math.trunc(Math.random() * 6) + 1;
+      let dice = Math.trunc(Math.random() * 6) + 1;
 
       //Displaying the dice
-      diceImage.classList.remove("hidden");
+      diceImage.classList.remove('hidden');
       diceImage.src = `dice-${dice}.png`;
 
       //Update the Score
@@ -45,7 +44,7 @@ function game() {
     }
   });
 
-  btnHold.addEventListener("click", function () {
+  btnHold.addEventListener('click', function () {
     if (playing == true) {
       scores[activePlayer] += currentScore;
       document.querySelector(`#score--${activePlayer}`).textContent =
@@ -53,7 +52,7 @@ function game() {
       if (scores[activePlayer] >= 100) {
         document
           .querySelector(`.player--${activePlayer}`)
-          .classList.add("player--winner");
+          .classList.add('player--winner');
         playing = false;
       }
       swicthPlayer();
@@ -66,26 +65,26 @@ function game() {
     document.querySelector(`#current--${activePlayer}`).textContent =
       currentScore;
     activePlayer = activePlayer ? 0 : 1;
-    player0El.classList.toggle("player--active");
-    player1El.classList.toggle("player--active");
+    player0El.classList.toggle('player--active');
+    player1El.classList.toggle('player--active');
   }
 }
 
-btnNewGame.addEventListener("click", function () {
+btnNewGame.addEventListener('click', function () {
   resetGame();
   game();
 });
 
 function resetGame() {
-  player0El.classList.add("player--active");
-  player1El.classList.remove("player--active");
-  document.querySelector(`.player--0`).classList.remove("player--winner");
-  document.querySelector(`.player--1`).classList.remove("player--winner");
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active');
+  document.querySelector(`.player--0`).classList.remove('player--winner');
+  document.querySelector(`.player--1`).classList.remove('player--winner');
 }
 function checkScreenSize() {
-  if (window.innerWidth < 600) {
+  if (window.innerWidth < 750) {
     alert(
-      "Not designed for mobile use , for better experience please use a bigger screen"
+      'Not designed for mobile use , for better experience please use a bigger screen'
     );
   }
 }
